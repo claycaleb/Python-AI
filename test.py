@@ -1,6 +1,7 @@
 import speech_recognition as sr
 
 def recognize_speech_from_mic(recognizer, microphone):
+    # https://realpython.com/python-speech-recognition/#working-with-microphones
     """Transcribe speech from recorded from `microphone`.
 
     Returns a dictionary with three keys:
