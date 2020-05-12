@@ -1,4 +1,5 @@
 import speech_recognition as sr
+import pyttsx3
 
 def recognize_speech_from_mic(recognizer, microphone):
     # https://realpython.com/python-speech-recognition/#working-with-microphones
@@ -23,7 +24,7 @@ def recognize_speech_from_mic(recognizer, microphone):
     # adjust the recognizer sensitivity to ambient noise and record audio
     # from the microphone
     with microphone as source:
-        recognizer.adjust_for_ambient_noise(source)
+        # recognizer.adjust_for_ambient_noise(source)
         audio = recognizer.listen(source)
 
     # set up the response object
@@ -48,6 +49,10 @@ def recognize_speech_from_mic(recognizer, microphone):
 
     return response
 
+def artie_says(phrase):
+    artie = pyttsx3.init()
+    artie.say(phrase)
+    artie.runAndWait()
 
 def main():
 
@@ -57,6 +62,9 @@ def main():
     guess = recognize_speech_from_mic(r, mic)
     print(guess["transcription"])
 
+    artie_says(f'You just said, {guess["transcription"]}')
+
 
 if __name__ == "__main__":
     main()
+
